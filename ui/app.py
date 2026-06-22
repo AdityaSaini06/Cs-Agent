@@ -1,11 +1,3 @@
-"""
-ui/app.py
-━━━━━━━━━━
-Refactored Streamlit frontend for the CS Expert Agent.
-Clean, minimalistic, developer-first engineering interface.
-Run: python -m streamlit run ui/app.py
-"""
-
 import sys
 import os
 
@@ -34,12 +26,10 @@ def set_active_query(query_text):
     st.session_state["main_input"] = query_text
     st.session_state["should_run"] = True
 
-# --- Minimalist Developer-First Design Tokens ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* Global Typography & Smooth Canvas Restructuring */
     html, body, [class*="css"] { 
         font-family: 'Inter', -apple-system, sans-serif; 
         -webkit-font-smoothing: antialiased;
@@ -49,12 +39,10 @@ st.markdown("""
         color: #c9d1d9; 
     }
 
-    /* Core Content Block Structure */
     .main-content-wrapper {
         padding: 0.5rem 2rem;
     }
 
-    /* Subdued Sidebar Structuring */
     section[data-testid="stSidebar"] {
         background-color: #090a0d !important;
         border-right: 1px solid #1f242c !important;
@@ -84,13 +72,11 @@ st.markdown("""
         margin: 2px 2px;
     }
 
-    /* Pixel-Perfect Inline Flexbox Layout Engine */
     div[data-testid="stHorizontalBlock"] {
         align-items: center !important;
         gap: 0.75rem !important;
     }
 
-    /* Input Field Overrides */
     div[data-testid="stTextInput"] {
         padding: 0 !important;
         margin: 0 !important;
@@ -109,7 +95,6 @@ st.markdown("""
         box-shadow: 0 0 0 1px #2f81f7 !important;
     }
 
-    /* Base Buttons Style Reset */
     .stButton {
         padding: 0 !important;
         margin: 0 !important;
@@ -127,7 +112,6 @@ st.markdown("""
         justify-content: center;
     }
     
-    /* Left Sidebar Specific Button Adjustments */
     section[data-testid="stSidebar"] .stButton > button {
         text-align: left;
         justify-content: flex-start;
@@ -142,7 +126,6 @@ st.markdown("""
         background: #21262d !important;
     }
 
-    /* Primary Execution Button Alignment Fix */
     div.submit-container button {
         background: #238636 !important;
         color: #ffffff !important;
@@ -154,7 +137,6 @@ st.markdown("""
         background: #2ea043 !important;
     }
 
-    /* CRITICAL FIX: Custom Sub-topics Button Container with generous inner padding */
     div.subtopic-container button {
         padding: 1rem 1.25rem !important;
         height: auto !important;
@@ -174,7 +156,6 @@ st.markdown("""
         background: #1f242c !important;
     }
 
-    /* Execution Flow / Debugger Log Formatting */
     .step-card {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.8rem; 
@@ -191,7 +172,6 @@ st.markdown("""
         line-height: 1.4;
     }
 
-    /* Output Section Architecture */
     .subject-badge {
         display: inline-block; 
         background: rgba(47, 129, 247, 0.1); 
@@ -210,7 +190,6 @@ st.markdown("""
         padding-top: 0.25rem;
     }
 
-    /* Native Expander Cleanup */
     .streamlit-expanderHeader {
         background-color: transparent !important;
         border-bottom: 1px solid #21262d !important;
@@ -224,7 +203,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- Sidebar Control Center ---
 with st.sidebar:
     st.markdown("### CS Expert Agent")
     
@@ -264,7 +242,6 @@ with st.sidebar:
     for ex in examples:
         st.button(ex, key=f"ex_{ex}", on_click=set_active_query, args=(ex,))
 
-# --- Main Application Canvas ---
 st.markdown('<div class="main-content-wrapper">', unsafe_allow_html=True)
 
 st.title("Computer Science Expert Agent")
@@ -358,7 +335,6 @@ if st.session_state["should_run"] and st.session_state["main_input"].strip():
         st.error(f"Agent Engine Error: {e}")
         st.info("Please verify network connectivity or validate API usage caps directly on your Groq console profile.")
 
-# --- Session History ---
 if st.session_state["history"]:
     st.markdown("---")
     st.markdown("<h5 style='color: #8b949e; font-weight: 400 !important; margin-bottom: 0.75rem;'>Prior Computations</h5>", unsafe_allow_html=True)

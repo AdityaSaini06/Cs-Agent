@@ -41,7 +41,6 @@ def generate_follow_ups(state: AgentState) -> dict:
 
 
 def _try_generate(llm, prompt: str) -> list[str]:
-    """Attempts to get a clean JSON array from the LLM; returns [] on any failure."""
     try:
         response = llm.invoke([HumanMessage(content=prompt)])
         match = re.search(r"\[.*?\]", response.content, re.DOTALL)
